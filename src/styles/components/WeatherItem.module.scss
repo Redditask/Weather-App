@@ -1,0 +1,47 @@
+@import "src/styles/base";
+
+.WeatherItem {
+
+  margin: 3rem;
+
+  width: 40rem;
+  height: 20rem;
+
+  border: $main-color solid;
+  border-radius: 1rem;
+
+  display: flex;
+  justify-content: start;
+
+  &__data {
+    border-left: $main-color solid;;
+
+    padding: 1.5rem 2.5rem;
+
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__element {
+    margin: 1rem 0;
+
+    font-size: 2rem;
+  }
+
+  &__title {
+    margin: 1rem 0;
+
+    font-size: 2.5rem;
+
+    text-decoration: underline;
+    cursor: pointer;
+
+    transition: 1s;
+
+    &:hover{
+      transform: scale(1.2);
+    }
+  }
+}

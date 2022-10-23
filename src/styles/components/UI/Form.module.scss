@@ -1,0 +1,11 @@
+@import "../../base";
+
+.Form {
+  height: 14rem;
+  width: 20rem;
+
+  display: block;
+
+  border: $main-color solid;
+  border-radius: 1rem;
+}

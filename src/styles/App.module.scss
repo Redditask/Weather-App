@@ -18,3 +18,17 @@
 .App {
   font-size: 1.5rem;
 }
+
+.text {
+  font-weight:normal;
+
+  cursor:pointer;
+
+  text-decoration: underline;
+
+  transition: 1s;
+
+  &:hover{
+    transform: scale(1.6);
+  }
+}

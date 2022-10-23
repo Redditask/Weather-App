@@ -5,13 +5,13 @@ import {useFetching} from "../hooks/useFetching";
 
 import React, {useCallback, useEffect, useState} from 'react';
 
-const WeatherItem = () => {
+const WeatherItem = ({location}) => {
     const [data, setData] = useState({});
     const [image, setImage] = useState(``);
 
 
     const getWeatherCallback = useCallback(async ()=> {
-            const response = await WeatherServise.getData();
+            const response = await WeatherServise.getData(location);
             setData({...data,
                 temp: Math.round(response.data.main.temp-273),
                 humidity: response.data.main.humidity,
@@ -37,7 +37,7 @@ const WeatherItem = () => {
             </div>
 
             <div className={styles.WeatherItem__data}>
-                <div className={styles.WeatherItem__title}>Zocca</div>
+                <div className={styles.WeatherItem__title}>{location}</div>
                 <div className={styles.WeatherItem__element}>{data.temp}{'\u00b0'} temperature</div>
                 <div className={styles.WeatherItem__element}>{data.humidity}% humidity</div>
                 <div className={styles.WeatherItem__element}>{data.wind}m/s speed</div>

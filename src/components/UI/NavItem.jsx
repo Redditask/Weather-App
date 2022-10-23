@@ -4,7 +4,7 @@ import React from 'react';
 
 const NavItem = ({text}) => {
     return (
-        <div className={styles.NavItem}>
+        <div className={styles.NavItem} >
             {text}
         </div>
     );

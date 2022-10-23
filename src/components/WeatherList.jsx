@@ -1,13 +1,16 @@
 import styles from "../styles/components/WeatherList.module.scss";
 
-import React from 'react';
+import React, {useState} from 'react';
 import WeatherItem from "./WeatherItem";
 
-const WeatherList = () => {
+const WeatherList = ({locations, children}) => {
+
     return (
         <div className={styles.WeatherList}>
-            <WeatherItem/>
-            <WeatherItem/>
+            {locations.map(location=>
+                <WeatherItem location={location} key={location}/>
+            )}
+            {children}
         </div>
     );
 };

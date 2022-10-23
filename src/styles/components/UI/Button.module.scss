@@ -1,0 +1,18 @@
+@import "../../base";
+
+.Button {
+  height: 5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2rem;
+
+  margin: 0 4rem;
+
+  border: $main-color solid;
+  border-radius: 0.5rem;
+
+  cursor: pointer;
+}

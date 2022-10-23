@@ -24,7 +24,7 @@ const Form = ({create}) => {
                     onChange={event=>setLocation(event.target.value)}
                 />
             </div>
-            <Button text="Add location" onClick={addNewLocation}/>
+            <Button text="Add location to the list" onClick={addNewLocation}/>
         </form>
     );
 };

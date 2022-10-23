@@ -7,12 +7,18 @@
   justify-content: center;
   align-items: center;
 
-  font-size: 2rem;
+  font-size: 1.6rem;
 
   margin: 0 4rem;
 
   border: $main-color solid;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 
   cursor: pointer;
+
+  transition: 0.8s;
+
+  &:hover{
+    border-color: black;
+  }
 }

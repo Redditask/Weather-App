@@ -45,3 +45,17 @@
     }
   }
 }
+
+.DeleteIcon {
+  margin-top: 0.8rem;
+  margin-left: 4rem;
+
+  cursor: pointer;
+
+  transform: scale(1.6);
+  transition: 1s;
+
+  &:hover{
+    transform: scale(2);
+  }
+}

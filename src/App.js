@@ -17,15 +17,19 @@ function App() {
         setModalStatus(false);
     }
 
+    function removeCard(card){
+        setLocations(locations.filter(location => location.id !== card.id))
+    }
+
     return (
         <div className={styles.App}>
             <Modal visible={modalStatus} setVisible={setModalStatus}>
                 <Form create={createCard}/>
             </Modal>
             <NavBar text={headerLinks}/>
-            <WeatherList locations={locations}>
+            <WeatherList locations={locations} remove={removeCard}>
                 <PreForm>
-                    <p className={styles.text} onClick={()=>setModalStatus(true)}>Add</p>
+                    <p title="Add card" className={styles.Plus} onClick={()=>setModalStatus(true)}>+</p>
                 </PreForm>
             </WeatherList>
         </div>

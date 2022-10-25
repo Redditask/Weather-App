@@ -19,16 +19,18 @@
   font-size: 1.5rem;
 }
 
-.text {
-  font-weight:normal;
+.Plus {
+  font-weight: normal;
+  font-size: 5rem;
+  font-style: normal;
 
-  cursor:pointer;
+  padding-left: 0.3rem;
 
-  text-decoration: underline;
+  cursor: pointer;
 
   transition: 1s;
 
-  &:hover{
+  &:hover {
     transform: scale(1.6);
   }
 }

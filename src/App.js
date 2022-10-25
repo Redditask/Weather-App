@@ -18,7 +18,7 @@ function App() {
     }
 
     function removeCard(card){
-        setLocations(locations.filter(location => location.id !== card.id))
+        setLocations(locations.filter(location => location !== card))
     }
 
     return (
@@ -29,7 +29,7 @@ function App() {
             <NavBar text={headerLinks}/>
             <WeatherList locations={locations} remove={removeCard}>
                 <PreForm>
-                    <p title="Add card" className={styles.Plus} onClick={()=>setModalStatus(true)}>+</p>
+                    <p title="Add card" className={styles.AddCard} onClick={()=>setModalStatus(true)}>+</p>
                 </PreForm>
             </WeatherList>
         </div>

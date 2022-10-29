@@ -5,7 +5,6 @@ import NavBar from "./components/UI/NavBar";
 import WeatherList from "./components/WeatherList";
 import Modal from "./components/UI/Modal";
 import Form from "./components/UI/Form";
-import PreForm from "./components/PreForm";
 
 function App() {
     const headerLinks = ["About"];
@@ -26,12 +25,16 @@ function App() {
             <Modal visible={modalStatus} setVisible={setModalStatus}>
                 <Form create={createCard} buttonText="Add location to the list" titleText="Enter location name"/>
             </Modal>
-            <NavBar text={headerLinks}/>
-            <WeatherList locations={locations} remove={removeCard}>
-                <PreForm>
-                    <p title="Add card" className={styles.AddCardItem} onClick={()=>setModalStatus(true)}>+</p>
-                </PreForm>
-            </WeatherList>
+            <NavBar text={headerLinks} setModalStatus={setModalStatus}>
+                <p title="Add weather" className={styles.AddCardItem} onClick={()=>setModalStatus(true)}>+</p>
+            </NavBar>
+            { locations.length
+                ? <WeatherList locations={locations} remove={removeCard}/>
+                : <div>
+                    <h1 style={{textAlign:"center", marginTop:"20rem"}}>Add your weather!</h1>
+                    <h3 style={{textAlign:"center", marginTop:"1rem"}}>(press "+" to add weather, "-" to delete)</h3>
+                </div>
+            }
         </div>
     );
 }

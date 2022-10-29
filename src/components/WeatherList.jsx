@@ -5,7 +5,7 @@ import React from 'react';
 import WeatherItem from "./WeatherItem";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 
-const WeatherList = ({locations, remove, children}) => {
+const WeatherList = ({locations, remove}) => {
 
     return (
             <TransitionGroup className={styles.WeatherList}>
@@ -18,7 +18,6 @@ const WeatherList = ({locations, remove, children}) => {
                     <WeatherItem location={location} remove={remove}/>
                 </CSSTransition>
             )}
-                {children}
             </TransitionGroup>
     );
 };

@@ -36,9 +36,10 @@ const WeatherItem = ({location, remove}) => {
             {isLoading
                 ? <Loader/>
                 : <Fragment>
-                    <div className={styles.WeatherItem__element}>
+                    <div className={styles.WeatherItem__leftHalf}>
                         <img src={image} alt='icon'/>
-                        <div title="weather" style={{textAlign:"center"}}>{data.weather}</div>
+                        <div title="weather" style={{textAlign:"center",fontSize:"2.5rem"}}>{data.weather}</div>
+                        <p title="Delete weather" className={styles.DeleteCardItem} onClick={()=>remove(location)}>-</p>
                     </div>
 
                     <div className={styles.WeatherItem__data}>
@@ -47,7 +48,6 @@ const WeatherItem = ({location, remove}) => {
                         <div className={styles.WeatherItem__element}>{data.humidity}% humidity</div>
                         <div className={styles.WeatherItem__element}>{data.wind}m/s speed</div>
                     </div>
-                    <AiOutlineClose title="Remove card" className={styles.DeleteIcon} onClick={()=>remove(location)}/>
                 </Fragment>
             }
         </div>

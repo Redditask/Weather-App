@@ -17,7 +17,7 @@ const Form = ({create, buttonText, titleText}) => {
     });
 
     useEffect(()=>{
-        fetch();
+        if(location.name!=="") fetch();
     }, [location.name])
 
     function addNewLocation(event) {

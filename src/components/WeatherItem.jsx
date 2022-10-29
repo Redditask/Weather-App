@@ -42,7 +42,7 @@ const WeatherItem = ({location, remove}) => {
                     </div>
 
                     <div className={styles.WeatherItem__data}>
-                        <div title="Location" className={styles.WeatherItem__title}>{location}</div>
+                        <div title="Location" className={styles.WeatherItem__title}>{location.name}, {location.country}</div>
                         <div className={styles.WeatherItem__element}>{data.temp}{'\u00b0'} temperature</div>
                         <div className={styles.WeatherItem__element}>{data.humidity}% humidity</div>
                         <div className={styles.WeatherItem__element}>{data.wind}m/s speed</div>

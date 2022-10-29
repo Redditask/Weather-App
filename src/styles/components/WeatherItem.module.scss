@@ -4,8 +4,8 @@
 
   margin: 3rem;
 
-  width: 40rem;
-  height: 20rem;
+  width: 45rem;
+  height: 25rem;
 
   border: $main-color solid;
   border-radius: 1rem;
@@ -16,7 +16,7 @@
   &__data {
     border-left: $main-color solid;;
 
-    padding: 1.5rem 2.5rem;
+    padding: 1.5rem 3rem;
 
     display: flex;
     align-items: start;
@@ -25,13 +25,13 @@
   }
 
   &__element {
-    margin: 1rem 0;
+    margin: 1rem;
 
     font-size: 2rem;
   }
 
   &__title {
-    margin: 1rem 0;
+    margin: 1rem;
 
     font-size: 2.5rem;
 
@@ -47,8 +47,7 @@
 }
 
 .DeleteIcon {
-  margin-top: 0.8rem;
-  margin-left: 4rem;
+  margin: 0.5rem;
 
   cursor: pointer;
 

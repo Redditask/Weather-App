@@ -11,11 +11,11 @@ const WeatherList = ({locations, remove, children}) => {
             <TransitionGroup className={styles.WeatherList}>
             {locations.map(location=>
                 <CSSTransition
-                    key={location}
+                    key={location.name+location.country}
                     timeout={850}
-                    classNames="card"
+                    classNames="item"
                 >
-                    <WeatherItem location={location} key={location} remove={remove}/>
+                    <WeatherItem location={location} remove={remove}/>
                 </CSSTransition>
             )}
                 {children}

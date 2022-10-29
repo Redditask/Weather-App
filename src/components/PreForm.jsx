@@ -13,7 +13,7 @@ const PreForm = ({children}) => {
                 </div>
 
                 <div className={styles.PreForm__data}>
-                    <div className={styles.PreForm__title}>Your location</div>
+                    <div className={styles.PreForm__title}>Location</div>
                     <div className={styles.PreForm__element}>"temperature"</div>
                     <div className={styles.PreForm__element}>"humidity"</div>
                     <div className={styles.PreForm__element}>"wind"</div>

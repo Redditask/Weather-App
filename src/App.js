@@ -9,7 +9,7 @@ import PreForm from "./components/PreForm";
 
 function App() {
     const headerLinks = ["About"];
-    const [locations, setLocations] = useState(["Hrodno"]);
+    const [locations, setLocations] = useState([]);
     const [modalStatus, setModalStatus] = useState(false);
 
     function createCard(newLocation){
@@ -18,7 +18,7 @@ function App() {
     }
 
     function removeCard(card){
-        setLocations(locations.filter(location => location !== card))
+        setLocations(locations.filter(location => (location.name !== card.name || location.country !== card.country)))
     }
 
     return (

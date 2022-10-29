@@ -5,8 +5,8 @@
 
   margin: 3rem;
 
-  width: 40rem;
-  height: 20rem;
+  width: 45rem;
+  height: 25rem;
 
   border: $main-color dashed;
   border-radius: 1rem;
@@ -26,7 +26,7 @@
   }
 
   &__element {
-    margin: 1rem 0;
+    margin: 1rem;
 
     font-size: 2rem;
   }
@@ -38,7 +38,7 @@
     border: 0.3rem dashed $main-color;
     border-radius: 50%;
 
-    margin: 1rem;
+    margin: 1.3rem;
     margin-bottom: 2rem;
 
     display: flex;
@@ -47,7 +47,7 @@
   }
 
   &__title {
-    margin: 1rem 0;
+    margin: 1rem;
 
     font-size: 2.5rem;
 

@@ -1,14 +1,14 @@
 @import "../../base";
 
 .Form {
-  height: 14rem;
-  width: 20rem;
-
+  width: 25rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 
   border: $main-color solid;
   border-radius: 1rem;
+
+  padding: 1rem;
 }

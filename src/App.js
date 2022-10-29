@@ -24,12 +24,12 @@ function App() {
     return (
         <div className={styles.App}>
             <Modal visible={modalStatus} setVisible={setModalStatus}>
-                <Form create={createCard}/>
+                <Form create={createCard} buttonText="Add location to the list" titleText="Enter location name"/>
             </Modal>
             <NavBar text={headerLinks}/>
             <WeatherList locations={locations} remove={removeCard}>
                 <PreForm>
-                    <p title="Add card" className={styles.AddCard} onClick={()=>setModalStatus(true)}>+</p>
+                    <p title="Add card" className={styles.AddCardItem} onClick={()=>setModalStatus(true)}>+</p>
                 </PreForm>
             </WeatherList>
         </div>

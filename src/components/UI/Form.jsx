@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import Input from "./Input";
 import Button from "./Button";
 
-const Form = ({create}) => {
+const Form = ({create, buttonText, titleText}) => {
     const [location, setLocation] = useState("");
 
     function addNewLocation(event) {
@@ -15,7 +15,7 @@ const Form = ({create}) => {
 
     return (
         <form className={styles.Form}>
-            <h3 style={{textAlign:"center", marginTop:"1rem", fontWeight:"normal"}}>Enter location name</h3>
+            <h3 style={{textAlign:"center", marginTop:"1rem", fontWeight:"normal"}}>{titleText}</h3>
             <div>
                 <Input
                     value={location}
@@ -24,7 +24,7 @@ const Form = ({create}) => {
                     onChange={event=>setLocation(event.target.value)}
                 />
             </div>
-            <Button text="Add location to the list" onClick={addNewLocation}/>
+            <Button text={buttonText} onClick={addNewLocation}/>
         </form>
     );
 };

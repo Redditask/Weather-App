@@ -3,8 +3,9 @@ import styles from "../styles/components/WeatherItem.module.scss";
 import WeatherServise from "../WeatherAPI/weatherServise";
 import {useFetching} from "../hooks/useFetching";
 
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {Fragment, useCallback, useEffect, useState} from 'react';
 import {AiOutlineClose} from "react-icons/ai"
+import Loader from "./UI/Loader";
 
 const WeatherItem = ({location, remove}) => {
     const [data, setData] = useState({});
@@ -24,7 +25,7 @@ const WeatherItem = ({location, remove}) => {
     );
     //чтобы вызывалсь одна и та же функция, а не создавалась новая при каждом рендере
 
-    const [fetch] = useFetching(getWeatherCallback);
+    const [fetch, isLoading] = useFetching(getWeatherCallback);
 
     useEffect(()=>{
         fetch();
@@ -32,18 +33,23 @@ const WeatherItem = ({location, remove}) => {
 
     return (
         <div className={styles.WeatherItem}>
-            <div className={styles.WeatherItem__element}>
-                <img src={image} alt='icon'/>
-                <div title="weather" style={{textAlign:"center"}}>{data.weather}</div>
-            </div>
+            {isLoading
+                ? <Loader/>
+                : <Fragment>
+                    <div className={styles.WeatherItem__element}>
+                        <img src={image} alt='icon'/>
+                        <div title="weather" style={{textAlign:"center"}}>{data.weather}</div>
+                    </div>
 
-            <div className={styles.WeatherItem__data}>
-                <div title="Location" className={styles.WeatherItem__title}>{location}</div>
-                <div className={styles.WeatherItem__element}>{data.temp}{'\u00b0'} temperature</div>
-                <div className={styles.WeatherItem__element}>{data.humidity}% humidity</div>
-                <div className={styles.WeatherItem__element}>{data.wind}m/s speed</div>
-            </div>
-            <AiOutlineClose title="Remove card" className={styles.DeleteIcon} onClick={()=>remove(location)}/>
+                    <div className={styles.WeatherItem__data}>
+                        <div title="Location" className={styles.WeatherItem__title}>{location}</div>
+                        <div className={styles.WeatherItem__element}>{data.temp}{'\u00b0'} temperature</div>
+                        <div className={styles.WeatherItem__element}>{data.humidity}% humidity</div>
+                        <div className={styles.WeatherItem__element}>{data.wind}m/s speed</div>
+                    </div>
+                    <AiOutlineClose title="Remove card" className={styles.DeleteIcon} onClick={()=>remove(location)}/>
+                </Fragment>
+            }
         </div>
     );
 };

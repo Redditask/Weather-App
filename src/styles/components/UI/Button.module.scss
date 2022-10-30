@@ -16,9 +16,10 @@
 
   cursor: pointer;
 
-  transition: 0.8s;
+  transition: 0.5s;
 
   &:hover{
     border-color: black;
+    transform: scale(1.2);
   }
 }

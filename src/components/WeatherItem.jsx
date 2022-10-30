@@ -39,7 +39,7 @@ const WeatherItem = ({location, remove}) => {
                     <div className={styles.WeatherItem__leftHalf}>
                         <img src={image} alt='icon'/>
                         <div title="weather" style={{textAlign:"center",fontSize:"2.5rem"}}>{data.weather}</div>
-                        <p title="Delete weather" className={styles.DeleteCardItem} onClick={()=>remove(location)}>-</p>
+                        <p title="Delete weather" className={styles.DeleteCardItem} onClick={()=>remove(location)}>delete</p>
                     </div>
 
                     <div className={styles.WeatherItem__data}>

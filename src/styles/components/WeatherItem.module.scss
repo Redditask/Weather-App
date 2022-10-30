@@ -38,7 +38,7 @@
     text-decoration: underline;
     cursor: pointer;
 
-    transition: 1s;
+    transition: 0.5s;
 
     &:hover{
       transform: scale(1.2);
@@ -54,21 +54,19 @@
 }
 
 .DeleteCardItem {
+  color: darkgray;
+
+  margin-top: 2.5rem;
+
   font-weight: normal;
-  font-size: 8rem;
+  font-size: 1.5rem;
 
   cursor: pointer;
 
-  animation: blink 3s linear infinite;
-  
-  @keyframes blink {
-    0%,100% {color: $main-color}
-    50% {color: black}
-  }
-
-  transition: 1s;
+  transition: 0.5s;
 
   &:hover {
-    transform: scale(1.6);
+    transform: scale(1.2);
+    color: black;
   }
 }

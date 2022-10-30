@@ -1,18 +1,18 @@
-import styles from "../../styles/components/UI/Form.module.scss";
+import styles from "../styles/components/AddLocationForm.module.scss";
 
 import React, {useEffect, useState} from 'react';
-import Input from "./Input";
-import Button from "./Button";
-import WeatherServise from "../../WeatherAPI/weatherServise";
-import {useFetching} from "../../hooks/useFetching";
-import LocationList from "../LocationList";
+import Input from "./UI/Input";
+import Button from "./UI/Button";
+import WeatherServise from "../WeatherAPI/weatherServise";
+import {useFetching} from "../hooks/useFetching";
+import LocationSelectList from "./LocationSelectList";
 
-const Form = ({create, buttonText, titleText}) => {
+const AddLocationForm = ({create, buttonText, titleText}) => {
     const [location, setLocation] = useState({name:"", country:""});
     const [locationList, setLocationList] = useState([]);
 
     const [fetch] = useFetching(async () => {
-        const response = await WeatherServise.getCoordinates(location);
+        const response = await WeatherServise.getLocations(location);
         setLocationList(response.data);
     });
 
@@ -29,7 +29,7 @@ const Form = ({create, buttonText, titleText}) => {
     }
 
     return (
-        <form className={styles.Form}>
+        <form className={styles.AddLocationForm}>
             <h3 style={{textAlign:"center", marginTop:"1rem", fontWeight:"normal"}}>{titleText}</h3>
                 <Input
                     value={`${location.name}${location.country}`}
@@ -37,10 +37,10 @@ const Form = ({create, buttonText, titleText}) => {
                     placeholder="Location name"
                     onChange={event=>setLocation({...location, name: event.target.value, country: ""})}
                 />
-                <LocationList locationList={locationList} select={setLocation}/>
+                <LocationSelectList locationList={locationList} select={setLocation}/>
             {location.country==="" ? <Button text={buttonText} disabled title="Select location in list"/> : <Button text={buttonText} onClick={addNewLocation}/>}
         </form>
     );
 };
 
-export default Form;
+export default AddLocationForm;

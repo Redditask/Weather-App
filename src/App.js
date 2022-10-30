@@ -1,13 +1,12 @@
 import styles from "./styles/App.module.scss";
 
 import React, {useState} from "react";
-import NavBar from "./components/UI/NavBar";
+import Header from "./components/UI/Header";
 import WeatherList from "./components/WeatherList";
 import Modal from "./components/UI/Modal";
-import Form from "./components/UI/Form";
+import AddLocationForm from "./components/AddLocationForm";
 
 function App() {
-    const headerLinks = ["About"];
     const [locations, setLocations] = useState([]);
     const [modalStatus, setModalStatus] = useState(false);
 
@@ -23,16 +22,15 @@ function App() {
     return (
         <div className={styles.App}>
             <Modal visible={modalStatus} setVisible={setModalStatus}>
-                <Form create={createCard} buttonText="Add location to the list" titleText="Enter location name"/>
+                <AddLocationForm create={createCard} buttonText="Add location to the list" titleText="Enter location name"/>
             </Modal>
-            <NavBar text={headerLinks} setModalStatus={setModalStatus}>
-                <p title="Add weather" className={styles.AddCardItem} onClick={()=>setModalStatus(true)}>+</p>
-            </NavBar>
+            <Header setModalStatus={setModalStatus}>
+                <p title="Add weather" className={styles.AddCardItem} onClick={()=>setModalStatus(true)}>Add</p>
+            </Header>
             { locations.length
                 ? <WeatherList locations={locations} remove={removeCard}/>
                 : <div>
                     <h1 style={{textAlign:"center", marginTop:"20rem"}}>Add your weather!</h1>
-                    <h3 style={{textAlign:"center", marginTop:"1rem"}}>(press "+" to add weather, "-" to delete)</h3>
                 </div>
             }
         </div>

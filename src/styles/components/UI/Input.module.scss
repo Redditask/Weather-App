@@ -10,4 +10,16 @@
   border-radius: 1rem;
 
   text-align: center;
+
+  transition: 0.5s;
+
+  &:focus {
+    transform: scale(1.2);
+    border-color: black;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+    border-color: black;
+  }
 }

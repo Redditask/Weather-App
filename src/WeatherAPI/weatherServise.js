@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default class WeatherServise {
-    static async getCoordinates(location) {
+    static async getLocations(location) {
         return axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${location.name}&limit=5&appid=cb882b5f3403b3db76b413f0f3818697`)
     }
 

@@ -1,6 +1,6 @@
 @import "src/styles/base";
 
-.LocationList {
+.LocationSelectList {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +13,13 @@
 
   width: 15rem;
   min-height: 5rem;
+
+  transition: 0.5s;
+
+  &:hover {
+      transform: scale(1.2);
+      border-color: black;
+  }
 
   &__item {
     text-align: center;

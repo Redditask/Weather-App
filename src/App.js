@@ -1,6 +1,6 @@
 import styles from "./styles/App.module.scss";
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "./components/UI/Header";
 import WeatherList from "./components/WeatherList";
 import Modal from "./components/UI/Modal";
@@ -13,11 +13,19 @@ function App() {
     function createCard(newLocation){
         setLocations([...locations, newLocation]);
         setModalStatus(false);
+
+        localStorage.setItem("data", JSON.stringify([...locations, newLocation]));
     }
 
     function removeCard(card){
-        setLocations(locations.filter(location => (location.name !== card.name || location.country !== card.country)))
+        setLocations(locations.filter(location => (location.name !== card.name || location.country !== card.country)));
+
+        localStorage.setItem("data", JSON.stringify(locations.filter(location => (location.name !== card.name || location.country !== card.country))));
     }
+
+    useEffect(()=>{
+        setLocations(JSON.parse(localStorage.getItem("data")));
+    },[])
 
     return (
         <div className={styles.App}>

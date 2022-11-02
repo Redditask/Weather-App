@@ -5,7 +5,9 @@ import React from 'react';
 const Modal = ({children, visible, setVisible}) => {
 
     const root = [styles.Modal];
-    if(visible) root.push(styles.active)
+    if(visible) {
+        root.push(styles.active)
+    }
 
     return (
         <div className={root.join(" ")} onClick={()=>setVisible(false)}>

@@ -28,9 +28,6 @@ function App() {
 
     return (
         <div className={styles.App}>
-            <Modal visible={modalStatus} setVisible={setModalStatus}>
-                <AddLocationForm create={createCard} buttonText="Add location to the list" titleText="Enter location name"/>
-            </Modal>
             <Header setModalStatus={setModalStatus}>
                 <p title="Add weather" className={styles.AddCardItem} onClick={()=>setModalStatus(true)}>Add</p>
             </Header>
@@ -40,6 +37,9 @@ function App() {
                     <h1 style={{textAlign:"center", marginTop:"20rem"}}>Add your weather!</h1>
                 </div>
             }
+            <Modal visible={modalStatus} setVisible={setModalStatus}>
+                <AddLocationForm create={createCard} buttonText="Add location to the list" titleText="Enter location name"/>
+            </Modal>
         </div>
     );
 }

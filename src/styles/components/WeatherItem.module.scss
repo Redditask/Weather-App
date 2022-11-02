@@ -49,6 +49,11 @@
       font-size: 2rem;
     }
 
+    @media (max-width: 370px) {
+      font-size: 0.8rem;
+      margin: 0.8rem;
+    }
+
     margin: 1rem;
   }
 

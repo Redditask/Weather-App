@@ -44,8 +44,8 @@ const WeatherItem = ({location, remove}) => {
                     </div>
                     : <Fragment>
                         <div className={styles.WeatherItem__leftHalf}>
-                            <img src={image} alt='icon'/>
-                            <div title="weather" style={{textAlign: "center", fontSize: "2.5rem"}}>{data.weather}</div>
+                            <img src={image} alt='icon' className={styles.WeatherItem__image}/>
+                            <div title="weather" className={styles.WeatherItem__weatherState}>{data.weather}</div>
                             <p title="Delete weather" className={styles.DeleteCardItem}
                                onClick={() => remove(location)}>delete</p>
                         </div>

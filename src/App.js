@@ -18,9 +18,8 @@ function App() {
     }
 
     function removeCard(card){
-        setLocations(locations.filter(location => (location.name !== card.name || location.country !== card.country)));
-
         localStorage.setItem("data", JSON.stringify(locations.filter(location => (location.name !== card.name || location.country !== card.country))));
+        setLocations(JSON.parse(localStorage.getItem("data")));
     }
 
     useEffect(()=>{

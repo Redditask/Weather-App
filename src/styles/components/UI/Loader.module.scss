@@ -1,15 +1,25 @@
 @import "src/styles/base";
 
 .Loader {
-  margin-top: 5rem;
-  margin-left: 15rem;
+  @media (max-width: 665px) {
+    width: 4rem;
+    height: 4rem;
+
+    margin-top: 5rem;
+    margin-left: 8rem;
+  }
+
+  @media (min-width: 666px) {
+    width: 9rem;
+    height: 9rem;
+
+    margin-top: 8rem;
+    margin-left: 15rem;
+  }
 
   border: 0.8rem solid $main-color;
   border-top: 0.8rem solid black;
   border-radius: 50%;
-
-  width: 9rem;
-  height: 9rem;
 
   animation: spin 2s linear infinite;
 

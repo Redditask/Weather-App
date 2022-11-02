@@ -40,14 +40,14 @@ const WeatherItem = ({location, remove}) => {
                         <div title="Location" className={styles.WeatherItem__title}>{location.name}, {location.country}</div>
                         <p>Sorry, we have no data for this</p>
                         <p title="Delete weather" className={styles.DeleteCardItem}
-                           onClick={() => remove(location)}>delete</p>
+                           onClick={() => remove(location)}>Delete</p>
                     </div>
                     : <Fragment>
                         <div className={styles.WeatherItem__leftHalf}>
                             <img src={image} alt='icon' className={styles.WeatherItem__image}/>
                             <div title="weather" className={styles.WeatherItem__weatherState}>{data.weather}</div>
                             <p title="Delete weather" className={styles.DeleteCardItem}
-                               onClick={() => remove(location)}>delete</p>
+                               onClick={() => remove(location)}>Delete</p>
                         </div>
 
                         <div className={styles.WeatherItem__data}>

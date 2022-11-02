@@ -102,6 +102,18 @@
   }
 
   &__error {
+    @media (max-width: 729px) {
+      font-size: 1rem;
+
+      margin: 2rem;
+    }
+
+    @media (min-width: 730px) {
+      font-size: 2rem;
+
+      margin: 5rem;
+    }
+
     display: flex;
     flex-direction: column;
     justify-content: center;

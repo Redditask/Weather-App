@@ -1,6 +1,7 @@
+import React, {useEffect, useState} from "react";
+
 import styles from "./styles/App.module.scss";
 
-import React, {useEffect, useState} from "react";
 import Header from "./components/UI/Header";
 import WeatherList from "./components/WeatherList";
 import Modal from "./components/UI/Modal";
@@ -24,12 +25,18 @@ function App() {
 
     useEffect(()=>{
         setLocations(JSON.parse(localStorage.getItem("data")));
-    },[])
+    },[]);
 
     return (
         <div className={styles.App}>
             <Header setModalStatus={setModalStatus}>
-                <p title="Add weather" className={styles.AddCardItem} onClick={()=>setModalStatus(true)}>Add</p>
+                <p
+                    title="Add weather"
+                    className={styles.AddCardItem}
+                    onClick={()=>setModalStatus(true)}
+                >
+                    Add
+                </p>
             </Header>
             { locations.length
                 ? <WeatherList locations={locations} remove={removeCard}/>
@@ -38,7 +45,11 @@ function App() {
                 </div>
             }
             <Modal visible={modalStatus} setVisible={setModalStatus}>
-                <AddLocationForm create={createCard} buttonText="Add location to the list" titleText="Enter location name"/>
+                <AddLocationForm
+                    create={createCard}
+                    buttonText="Add location to the list"
+                    titleText="Enter location name"
+                />
             </Modal>
         </div>
     );

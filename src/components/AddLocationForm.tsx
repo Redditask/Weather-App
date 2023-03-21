@@ -1,24 +1,23 @@
+import React, {useEffect, useState} from "react";
+
 import styles from "../styles/components/AddLocationForm.module.scss";
 
-import React, {useEffect, useState} from 'react';
 import Input from "./UI/Input";
 import Button from "./UI/Button";
-import WeatherServise from "../WeatherAPI/weatherServise";
-import {useFetching} from "../hooks/useFetching";
 import LocationSelectList from "./LocationSelectList";
 
 const AddLocationForm = ({create, buttonText, titleText}) => {
     const [location, setLocation] = useState({name:"", country:""});
     const [locationList, setLocationList] = useState([]);
 
-    const [fetch] = useFetching(async () => {
-        const response = await WeatherServise.getLocations(location);
-        setLocationList(response.data);
-    });
-
-    useEffect(()=>{
-        if(location.name!=="") fetch();
-    }, [location.name])
+    // const [fetch] = useFetching(async () => {
+    //     const response = await WeatherApi.getLocations(location);
+    //     setLocationList(response.data);
+    // });
+    //
+    // useEffect(()=>{
+    //     if(location.name!=="") fetch();
+    // }, [location.name])
 
     function addNewLocation(event) {
         event.preventDefault();

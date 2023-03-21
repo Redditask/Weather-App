@@ -1,9 +1,7 @@
+import React, {useCallback, useEffect, useState} from "react";
+
 import styles from "../styles/components/WeatherItem.module.scss";
 
-import WeatherServise from "../WeatherAPI/weatherServise";
-import {useFetching} from "../hooks/useFetching";
-
-import React, {Fragment, useCallback, useEffect, useState} from 'react';
 import Loader from "./UI/Loader";
 
 const WeatherItem = ({location, remove}) => {
@@ -11,25 +9,25 @@ const WeatherItem = ({location, remove}) => {
     const [image, setImage] = useState(``);
 
 
-    const getWeatherCallback = useCallback(async () => {
-            const response = await WeatherServise.getData(location);
-            setData({
-                ...data,
-                temp: Math.round(response.data.main.temp - 273),
-                humidity: response.data.main.humidity,
-                weather: response.data.weather[0].main,
-                wind: response.data.wind.speed
-            });
-            setImage(`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`);
-        }
-    );
+    // const getWeatherCallback = useCallback(async () => {
+    //         const response = await WeatherApi.getData(location);
+    //         setData({
+    //             ...data,
+    //             temp: Math.round(response.data.main.temp - 273),
+    //             humidity: response.data.main.humidity,
+    //             weather: response.data.weather[0].main,
+    //             wind: response.data.wind.speed
+    //         });
+    //         setImage(`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`);
+    //     }
+    // );
     //чтобы вызывалсь одна и та же функция, а не создавалась новая при каждом рендере
 
-    const [fetch, isLoading, error] = useFetching(getWeatherCallback);
-
-    useEffect(() => {
-        fetch();
-    }, []);
+    // const [fetch, isLoading, error] = useFetching(getWeatherCallback);
+    //
+    // useEffect(() => {
+    //     fetch();
+    // }, []);
 
     return (
         <div className={styles.WeatherItem}>
@@ -42,7 +40,7 @@ const WeatherItem = ({location, remove}) => {
                         <p title="Delete weather" className={styles.DeleteCardItem}
                            onClick={() => remove(location)}>Delete</p>
                     </div>
-                    : <Fragment>
+                    : <>
                         <div className={styles.WeatherItem__leftHalf}>
                             <img src={image} alt='icon' className={styles.WeatherItem__image}/>
                             <div title="weather" className={styles.WeatherItem__weatherState}>{data.weather}</div>
@@ -57,7 +55,7 @@ const WeatherItem = ({location, remove}) => {
                             <div className={styles.WeatherItem__element}>{data.humidity}% humidity</div>
                             <div className={styles.WeatherItem__element}>{data.wind}m/s speed</div>
                         </div>
-                    </Fragment>
+                    </>
             }
         </div>
     );

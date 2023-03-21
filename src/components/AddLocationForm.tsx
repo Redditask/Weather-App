@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
 import styles from "../styles/components/AddLocationForm.module.scss";
 
@@ -6,8 +6,14 @@ import Input from "./UI/Input";
 import Button from "./UI/Button";
 import LocationSelectList from "./LocationSelectList";
 
-const AddLocationForm = ({create, buttonText, titleText}) => {
-    const [location, setLocation] = useState({name:"", country:""});
+interface AddLocationFormProps {
+    create: (location: any) => void;
+    buttonText: string;
+    titleText: string;
+}
+
+const AddLocationForm: React.FC<AddLocationFormProps> = ({create, buttonText, titleText}) => {
+    const [location, setLocation] = useState<any>({name:"", country:""});
     const [locationList, setLocationList] = useState([]);
 
     // const [fetch] = useFetching(async () => {
@@ -19,7 +25,7 @@ const AddLocationForm = ({create, buttonText, titleText}) => {
     //     if(location.name!=="") fetch();
     // }, [location.name])
 
-    function addNewLocation(event) {
+    function addNewLocation(event: any) {
         event.preventDefault();
         create(location);
 
@@ -34,7 +40,7 @@ const AddLocationForm = ({create, buttonText, titleText}) => {
                     value={`${location.name}${location.country}`}
                     type="text"
                     placeholder="Location name"
-                    onChange={event=>setLocation({...location, name: event.target.value, country: ""})}
+                    onChange={(event: any)=>setLocation({...location, name: event.target.value, country: ""})}
                 />
                 <LocationSelectList locationList={locationList} select={setLocation}/>
             {location.country==="" ? <Button text={buttonText} disabled title="Select location in list"/> : <Button text={buttonText} onClick={addNewLocation}/>}

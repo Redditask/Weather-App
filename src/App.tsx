@@ -8,28 +8,28 @@ import Modal from "./components/UI/Modal";
 import AddLocationForm from "./components/AddLocationForm";
 
 function App() {
-    const [locations, setLocations] = useState([]);
+    const [locations, setLocations] = useState<any>([]);
     const [modalStatus, setModalStatus] = useState(false);
 
-    function createCard(newLocation){
+    function createCard(newLocation: any){
         setLocations([...locations, newLocation]);
         setModalStatus(false);
 
         localStorage.setItem("data", JSON.stringify([...locations, newLocation]));
     }
 
-    function removeCard(card){
-        localStorage.setItem("data", JSON.stringify(locations.filter(location => (location.name !== card.name || location.country !== card.country))));
-        setLocations(JSON.parse(localStorage.getItem("data")));
+    function removeCard(card: any){
+        //localStorage.setItem("data", JSON.stringify(locations.filter(location => (location.name !== card.name || location.country !== card.country))));
+        //setLocations(JSON.parse(localStorage.getItem("data")));
     }
 
     useEffect(()=>{
-        setLocations(JSON.parse(localStorage.getItem("data")));
+        //setLocations(JSON.parse(localStorage.getItem("data")));
     },[]);
 
     return (
         <div className={styles.App}>
-            <Header setModalStatus={setModalStatus}>
+            <Header>
                 <p
                     title="Add weather"
                     className={styles.AddCardItem}

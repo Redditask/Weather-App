@@ -1,9 +1,14 @@
+import React, {ReactNode} from "react";
+
 import styles from "../../styles/components/UI/Header.module.scss";
+
 import { WiCloud } from "react-icons/wi";
 
-import React from 'react';
+interface HeaderProps {
+    children: ReactNode;
+}
 
-const Header = ({children}) => {
+const Header: React.FC<HeaderProps> = ({children}) => {
     return (
         <nav className={styles.Header}>
             <WiCloud size="5rem"/>

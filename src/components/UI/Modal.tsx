@@ -1,9 +1,14 @@
+import React, {ReactNode} from "react";
+
 import styles from "../../styles/components/UI/Modal.module.scss"
 
-import React from 'react';
+interface ModalProps {
+    children: ReactNode;
+    visible: boolean;
+    setVisible: (visible: boolean) => void;
+}
 
-const Modal = ({children, visible, setVisible}) => {
-
+const Modal: React.FC<ModalProps> = ({children, visible, setVisible}) => {
     const root = [styles.Modal];
     if(visible) root.push(styles.active);
 

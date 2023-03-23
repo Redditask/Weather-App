@@ -5,7 +5,7 @@ export interface ILocation {
     name: string;
 }
 
-export interface IWeatherCard {
+export interface ILocationInfo {
     main: {
         temp: number;
         humidity: number;
@@ -13,8 +13,10 @@ export interface IWeatherCard {
     wind: {
         speed: number;
     };
-    weather: {
-        main: string;
-        icon: string;
-    };
+    weather: [
+        {
+            main: string,
+            icon: string,
+        }
+    ];
 }

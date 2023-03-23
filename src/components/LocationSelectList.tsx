@@ -3,19 +3,25 @@ import React from "react";
 import styles from "../styles/components/LocationSelectList.module.scss";
 import "../styles/components/UI/TransitionStyles.scss";
 
+import {ILocation} from "../types/types";
+
 interface LocationSelectProps {
-    locationList: any;
-    select: (data: any) => void;
+    locationList: ILocation [];
+    selectLocation: (location: ILocation) => void;
 }
 
-const LocationSelectList: React.FC<LocationSelectProps> = ({locationList, select}) => {
+const LocationSelectList: React.FC<LocationSelectProps> = ({locationList, selectLocation}) => {
+
+    const selectLocationHandler = (location: ILocation) =>
+        selectLocation({name: location.name, country: location.country, lat: location.lat, lon: location.lon});
+
     return (
         <div className={styles.LocationSelectList}>
-            {locationList.map((location: any, index: number)=>
+            {locationList.map((location: ILocation, index: number)=>
                 <p
                     key={index}
                     className={styles.LocationSelectList__item}
-                    onClick={()=>select({name: location.name, country: location.country})}
+                    onClick={()=>selectLocationHandler(location)}
                 >
                     {location.name}, {location.country}
                 </p>)

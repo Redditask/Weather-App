@@ -7,8 +7,10 @@ import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 import WeatherItem from "./WeatherItem";
 
+import {ILocation} from "../types/types";
+
 interface WeatherListProps {
-    locations: any;
+    locations: ILocation [];
     remove: (card: any) => void;
 }
 
@@ -16,7 +18,7 @@ const WeatherList: React.FC<WeatherListProps> = ({locations, remove}) => {
 
     return (
         <TransitionGroup className={styles.WeatherList}>
-            {locations.map((location: any) =>
+            {locations.map((location: ILocation) =>
                 <CSSTransition
                     key={location.name + location.country}
                     timeout={850}

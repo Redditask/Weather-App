@@ -12,9 +12,13 @@ const Modal: React.FC<ModalProps> = ({children, visible, setVisible}) => {
     const root = [styles.Modal];
     if(visible) root.push(styles.active);
 
+    const modalStatusHandler = () => setVisible(false);
+
+    const propagationHandler = (event: any) => event.stopPropagation();
+
     return (
-        <div className={root.join(" ")} onClick={()=>setVisible(false)}>
-            <div className={styles.ModalContent} onClick={event => event.stopPropagation()}>
+        <div className={root.join(" ")} onClick={modalStatusHandler}>
+            <div className={styles.ModalContent} onClick={propagationHandler}>
                 {children}
             </div>
         </div>

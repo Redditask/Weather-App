@@ -11,21 +11,23 @@ function App() {
     const [locations, setLocations] = useState<any>([]);
     const [modalStatus, setModalStatus] = useState(false);
 
-    function createCard(newLocation: any){
+    const createCard = (newLocation: any) => {
         setLocations([...locations, newLocation]);
         setModalStatus(false);
 
-        localStorage.setItem("data", JSON.stringify([...locations, newLocation]));
-    }
+        //localStorage.setItem("data", JSON.stringify([...locations, newLocation]));
+    };
 
-    function removeCard(card: any){
-        //localStorage.setItem("data", JSON.stringify(locations.filter(location => (location.name !== card.name || location.country !== card.country))));
-        //setLocations(JSON.parse(localStorage.getItem("data")));
-    }
+    const removeCard = (card: any): void => {
+        // localStorage.setItem("data", JSON.stringify(locations.filter(location => (location.name !== card.name || location.country !== card.country))));
+        // setLocations(JSON.parse(localStorage.getItem("data")));
+    };
 
     useEffect(()=>{
         //setLocations(JSON.parse(localStorage.getItem("data")));
     },[]);
+
+    const modalStatusHandler = () => setModalStatus(true);
 
     return (
         <div className={styles.App}>
@@ -33,7 +35,7 @@ function App() {
                 <p
                     title="Add weather"
                     className={styles.AddCardItem}
-                    onClick={()=>setModalStatus(true)}
+                    onClick={modalStatusHandler}
                 >
                     Add
                 </p>

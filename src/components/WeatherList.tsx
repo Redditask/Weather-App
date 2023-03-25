@@ -11,10 +11,10 @@ import {ILocation} from "../types/types";
 
 interface WeatherListProps {
     locations: ILocation [];
-    remove: (card: any) => void;
+    removeLocation: (card: any) => void;
 }
 
-const WeatherList: React.FC<WeatherListProps> = ({locations, remove}) => {
+const WeatherList: React.FC<WeatherListProps> = ({locations, removeLocation}) => {
 
     return (
         <TransitionGroup className={styles.WeatherList}>
@@ -24,7 +24,7 @@ const WeatherList: React.FC<WeatherListProps> = ({locations, remove}) => {
                     timeout={850}
                     classNames="item"
                 >
-                    <WeatherItem location={location} remove={remove}/>
+                    <WeatherItem location={location} removeLocation={removeLocation}/>
                 </CSSTransition>
             )}
         </TransitionGroup>

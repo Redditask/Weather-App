@@ -7,27 +7,31 @@ import WeatherList from "./components/WeatherList";
 import Modal from "./components/UI/Modal";
 import AddLocationForm from "./components/AddLocationForm";
 
-function App() {
-    const [locations, setLocations] = useState<any>([]);
-    const [modalStatus, setModalStatus] = useState(false);
+import {ILocation} from "./types/types";
 
-    const createCard = (newLocation: any) => {
-        setLocations([...locations, newLocation]);
+function App() {
+    const [locations, setLocations] = useState<ILocation []>([]);
+    const [modalStatus, setModalStatus] = useState<boolean>(false);
+
+    const addLocation = (location: ILocation) => {
+        setLocations([...locations, location]);
         setModalStatus(false);
 
-        //localStorage.setItem("data", JSON.stringify([...locations, newLocation]));
+        localStorage.setItem("data", JSON.stringify([...locations, location]));
     };
 
-    const removeCard = (card: any): void => {
-        // localStorage.setItem("data", JSON.stringify(locations.filter(location => (location.name !== card.name || location.country !== card.country))));
-        // setLocations(JSON.parse(localStorage.getItem("data")));
+    const removeLocation = (removedLocation: ILocation): void => {
+        localStorage.setItem("data", JSON.stringify(locations.filter(
+            location => (location.name !== removedLocation.name || location.country !== removedLocation.country)
+        )));
+        setLocations(JSON.parse(localStorage.getItem("data") || "[]"));
     };
 
     useEffect(()=>{
-        //setLocations(JSON.parse(localStorage.getItem("data")));
+        setLocations(JSON.parse(localStorage.getItem("data") || "[]"));
     },[]);
 
-    const modalStatusHandler = () => setModalStatus(true);
+    const modalStatusHandler = (): void => setModalStatus(true);
 
     return (
         <div className={styles.App}>
@@ -41,14 +45,14 @@ function App() {
                 </p>
             </Header>
             { locations.length
-                ? <WeatherList locations={locations} remove={removeCard}/>
+                ? <WeatherList locations={locations} removeLocation={removeLocation}/>
                 : <div>
                     <h1 style={{textAlign:"center", marginTop:"20rem"}}>Add your weather!</h1>
                 </div>
             }
             <Modal visible={modalStatus} setVisible={setModalStatus}>
                 <AddLocationForm
-                    create={createCard}
+                    create={addLocation}
                     buttonText="Add location to the list"
                     titleText="Enter location name"
                 />

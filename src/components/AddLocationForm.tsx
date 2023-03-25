@@ -24,19 +24,19 @@ const AddLocationForm: React.FC<AddLocationFormProps> = ({create, buttonText, ti
 
     const {data: locationList = []} = useGetLocationsQuery({locationName: location.name});
 
-    const addNewLocation = (event: any) => {
+    const addNewLocation = (event: any): void => {
         event.preventDefault();
         create(location);
 
         setLocation({name: "", country: "", lon: 0, lat: 0});
     };
 
-    const locationInputHandler = (event: any) => {
+    const locationInputHandler = (event: any): void => {
         setInputString(`${event.target.value}`);
         setLocation({name: event.target.value, country: "", lat: 0, lon: 0});
     };
 
-    const selectLocationHandler = (location: ILocation) => {
+    const selectLocationHandler = (location: ILocation): void => {
         setInputString(`${location.name}, ${location.country}`);
         setLocation(location);
     };

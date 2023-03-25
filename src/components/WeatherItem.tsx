@@ -13,16 +13,16 @@ import {getImage} from "../utils/helpers";
 
 interface WeatherItemProps {
     location: ILocation;
-    remove: (card: any) => void;
+    removeLocation: (card: any) => void;
 }
 
-const WeatherItem: React.FC<WeatherItemProps> = ({location, remove}) => {
+const WeatherItem: React.FC<WeatherItemProps> = ({location, removeLocation}) => {
     const {data: locationInfo = locationInfoInitialState, isSuccess, isLoading} = useGetDataAboutLocationQuery({
         locationName: location.name,
         locationCountry: location.country
     });
 
-    const removeLocation = () => remove(location);
+    const removeLocationHandler = (): void => removeLocation(location);
 
     return (
         <div className={styles.WeatherItem}>
@@ -40,7 +40,7 @@ const WeatherItem: React.FC<WeatherItemProps> = ({location, remove}) => {
                         <p
                             className={styles.DeleteCardItem}
                             title="Delete weather"
-                            onClick={removeLocation}
+                            onClick={removeLocationHandler}
                         >
                             Delete
                         </p>
@@ -61,7 +61,7 @@ const WeatherItem: React.FC<WeatherItemProps> = ({location, remove}) => {
                             <p
                                 className={styles.DeleteCardItem}
                                 title="Delete weather"
-                                onClick={removeLocation}
+                                onClick={removeLocationHandler}
                             >
                                 Delete
                             </p>

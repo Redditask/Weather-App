@@ -11,7 +11,7 @@ interface LocationSelectProps {
 }
 
 const LocationSelectList: React.FC<LocationSelectProps> = ({locationList, selectLocation}) => {
-    const selectLocationHandler = (location: ILocation) =>
+    const selectLocationHandler = (location: ILocation): void =>
         selectLocation({name: location.name, country: location.country, lat: location.lat, lon: location.lon});
 
     return (

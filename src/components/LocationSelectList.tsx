@@ -23,8 +23,8 @@ const LocationSelectList: React.FC<LocationSelectProps> = ({locationList, select
                     onClick={()=>selectLocationHandler(location)}
                 >
                     {location.name}, {location.country}
-                </p>)
-            }
+                </p>
+            )}
         </div>
     );
 };

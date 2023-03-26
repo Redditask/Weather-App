@@ -34,21 +34,23 @@ function App() {
     const modalStatusHandler = (): void => setModalStatus(true);
 
     return (
-        <div className={styles.App}>
+        <div className={styles.app}>
             <Header>
                 <p
                     title="Add weather"
-                    className={styles.AddCardItem}
+                    className={styles.app__addButton}
                     onClick={modalStatusHandler}
                 >
                     Add
                 </p>
             </Header>
-            { locations.length
-                ? <WeatherList locations={locations} removeLocation={removeLocation}/>
-                : <div>
-                    <h1 style={{textAlign:"center", marginTop:"20rem"}}>Add your weather!</h1>
-                </div>
+            {
+                locations.length
+                    ?
+                    <WeatherList locations={locations} removeLocation={removeLocation}/>
+                    :
+                    <h1 className={styles.app__introText}>Add weather!</h1>
+
             }
             <Modal visible={modalStatus} setVisible={setModalStatus}>
                 <AddLocationForm

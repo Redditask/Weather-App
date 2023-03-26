@@ -1,0 +1,56 @@
+@import "src/styles/base";
+
+.weatherDescription {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+
+  @media (max-width: 729px) {
+    padding: 1rem 0;
+  }
+
+  @media (min-width: 730px) {
+    padding: 1.5rem 5rem;
+  }
+
+  border-left: $main-color solid;
+
+  &__item {
+    @media (max-width: 729px) {
+      font-size: 1rem;
+    }
+
+    @media (min-width: 730px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 370px) {
+      font-size: 0.8rem;
+      margin: 0.8rem;
+    }
+
+    margin: 1rem;
+  }
+
+  &__title {
+    @media (max-width: 729px) {
+      font-size: 1.5rem;
+    }
+
+    @media (min-width: 730px) {
+      font-size: 2.5rem;
+    }
+
+    margin: 1rem;
+
+    text-decoration: underline;
+    cursor: pointer;
+
+    transition: 0.5s;
+
+    &:hover{
+      transform: scale(1.2);
+    }
+  }
+}

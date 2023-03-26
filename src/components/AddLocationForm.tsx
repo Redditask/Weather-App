@@ -42,18 +42,32 @@ const AddLocationForm: React.FC<AddLocationFormProps> = ({create, buttonText, ti
     };
 
     return (
-        <form className={styles.AddLocationForm}>
-            <h3 style={{textAlign:"center", marginTop:"1rem", fontWeight:"normal"}}>{titleText}</h3>
+        <form className={styles.addLocationForm}>
+            <h3 className={styles.addLocationForm__title}>{titleText}</h3>
                 <Input
                     value={`${inputString}`}
                     type="text"
                     placeholder="Location name"
                     onChange={locationInputHandler}
                 />
-                <LocationSelectList locationList={locationList} selectLocation={selectLocationHandler}/>
-            {location.country === ""
-                ? <Button text={buttonText} disabled={true} title="Select location in list"/>
-                : <Button text={buttonText} disabled={false} onClick={addNewLocation}/>
+                <LocationSelectList
+                    locationList={locationList}
+                    selectLocation={selectLocationHandler}
+                />
+            {
+                location.country
+                    ?
+                    <Button
+                        title="Select location in list"
+                        text={buttonText}
+                        disabled={true}
+                    />
+                    :
+                    <Button
+                        text={buttonText}
+                        disabled={false}
+                        onClick={addNewLocation}
+                    />
             }
         </form>
     );

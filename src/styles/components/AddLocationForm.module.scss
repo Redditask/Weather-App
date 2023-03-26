@@ -1,6 +1,6 @@
 @import "../base";
 
-.AddLocationForm {
+.addLocationForm {
   width: 25rem;
   display: flex;
   flex-direction: column;
@@ -11,4 +11,10 @@
   border-radius: 1rem;
 
   padding: 1rem;
+
+  &__title {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: normal;
+  }
 }

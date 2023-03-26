@@ -1,0 +1,50 @@
+.successWeather {
+
+  &__weather {
+    text-align: center;
+
+    @media (max-width: 729px) {
+      font-size: 1.5rem;
+    }
+
+    @media (min-width: 730px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 729px) {
+      margin: 0 0.5rem;
+    }
+  }
+
+  &__image {
+    @media (max-width: 729px) {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+
+  &__deleteButton {
+    color: darkgray;
+
+    font-weight: normal;
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    margin-top: 2.5rem;
+
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+      color: black;
+    }
+  }
+}

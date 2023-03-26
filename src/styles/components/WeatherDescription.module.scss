@@ -34,6 +34,8 @@
   }
 
   &__title {
+    font-weight: bold;
+
     @media (max-width: 729px) {
       font-size: 1.5rem;
     }
@@ -43,14 +45,5 @@
     }
 
     margin: 1rem;
-
-    text-decoration: underline;
-    cursor: pointer;
-
-    transition: 0.5s;
-
-    &:hover{
-      transform: scale(1.2);
-    }
   }
 }

@@ -6,13 +6,11 @@ import {useGetDataAboutLocationQuery} from "../API/weatherApi";
 
 import Loader from "./UI/Loader";
 import ErrorWeather from "./ErrorWeather";
-import WeatherDescription from "./WeatherDescription";
+import SuccessWeather from "./SuccessWeather";
 
 import {ILocation} from "../types/types";
 
 import {locationInfoInitialState} from "../utils/consts";
-import {getImage} from "../utils/helpers";
-
 
 interface WeatherItemProps {
     location: ILocation;
@@ -24,8 +22,6 @@ const WeatherItem: React.FC<WeatherItemProps> = ({location, removeLocation}) => 
         locationName: location.name,
         locationCountry: location.country
     });
-
-    const removeLocationHandler = (): void => removeLocation(location);
 
     return (
         <div className={styles.weatherItem}>
@@ -41,32 +37,11 @@ const WeatherItem: React.FC<WeatherItemProps> = ({location, removeLocation}) => 
                             removeLocation={removeLocation}
                         />
                         :
-                        <>
-                            <div className={styles.weatherItem__leftHalf}>
-                                <img
-                                    src={getImage(locationInfo.weather[0].icon)}
-                                    alt='icon'
-                                    className={styles.WeatherItem__image}
-                                />
-                                <p
-                                    title="weather"
-                                    className={styles.WeatherItem__weatherState}
-                                >
-                                    {locationInfo.weather[0].main}
-                                </p>
-                                <p
-                                    className={styles.weatherItem__deleteButton}
-                                    title="Delete this weather"
-                                    onClick={removeLocationHandler}
-                                >
-                                    Delete
-                                </p>
-                            </div>
-                            <WeatherDescription
-                                location={location}
-                                locationInfo={locationInfo}
-                            />
-                        </>
+                        <SuccessWeather
+                            location={location}
+                            locationInfo={locationInfo}
+                            removeLocation={removeLocation}
+                        />
             }
         </div>
     );

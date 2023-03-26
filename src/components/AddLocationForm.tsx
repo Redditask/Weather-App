@@ -55,7 +55,7 @@ const AddLocationForm: React.FC<AddLocationFormProps> = ({create, buttonText, ti
                     selectLocation={selectLocationHandler}
                 />
             {
-                location.country
+                location.country === ""
                     ?
                     <Button
                         title="Select location in list"

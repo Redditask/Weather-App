@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useTransition} from "react";
 
 import styles from "../styles/components/AddLocationForm.module.scss";
 
@@ -19,6 +19,7 @@ interface AddLocationFormProps {
 }
 
 const AddLocationForm: React.FC<AddLocationFormProps> = ({create, buttonText, titleText}) => {
+    const [isPending, startTransition] = useTransition();
     const [location, setLocation] = useState<ILocation>(locationInitialState);
     const [inputString, setInputString] = useState<string>("");
 
@@ -32,8 +33,10 @@ const AddLocationForm: React.FC<AddLocationFormProps> = ({create, buttonText, ti
     };
 
     const locationInputHandler = (event: any): void => {
-        setInputString(`${event.target.value}`);
-        setLocation({name: event.target.value, country: "", lat: 0, lon: 0});
+        startTransition(()=>{
+            setInputString(`${event.target.value}`);
+            setLocation({name: event.target.value, country: "", lat: 0, lon: 0});
+        });
     };
 
     const selectLocationHandler = (location: ILocation): void => {
@@ -55,18 +58,18 @@ const AddLocationForm: React.FC<AddLocationFormProps> = ({create, buttonText, ti
                     selectLocation={selectLocationHandler}
                 />
             {
-                location.country === ""
+                location.country.length
                     ?
-                    <Button
-                        title="Select location in list"
-                        text={buttonText}
-                        disabled={true}
-                    />
-                    :
                     <Button
                         text={buttonText}
                         disabled={false}
                         onClick={addNewLocation}
+                    />
+                    :
+                    <Button
+                        title="Select location in list"
+                        text={buttonText}
+                        disabled={true}
                     />
             }
         </form>

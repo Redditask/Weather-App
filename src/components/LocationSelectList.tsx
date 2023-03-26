@@ -16,15 +16,17 @@ const LocationSelectList: React.FC<LocationSelectProps> = ({locationList, select
 
     return (
         <div className={styles.LocationSelectList}>
-            {locationList.map((location: ILocation, index: number)=>
-                <p
-                    key={index}
-                    className={styles.LocationSelectList__item}
-                    onClick={()=>selectLocationHandler(location)}
-                >
-                    {location.name}, {location.country}
-                </p>
-            )}
+            {
+                locationList.map((location: ILocation, index: number) =>
+                    <p
+                        key={index}
+                        className={styles.LocationSelectList__item}
+                        onClick={() => selectLocationHandler(location)}
+                    >
+                        {location.name}, {location.country}
+                    </p>
+                )
+            }
         </div>
     );
 };
